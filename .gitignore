@@ -1,0 +1,8 @@
+.DS_Store
+docs/
+*.tar.gz
+node_modules/
+.thumbnail
+screenshots/
+tweaks-panel.jsx
+image-slot.js

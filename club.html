@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le club · ACB Judo</title>
+<meta name="description" content="L'ACB Judo : le code moral du judo, l'histoire du club, l'équipe pédagogique et les lieux de pratique à Bobigny.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.club-hero{ padding-bottom:clamp(18px,3vw,38px); }
+.club-hero-inner{ display:grid; grid-template-columns:1.06fr .94fr; gap:clamp(28px,5vw,60px); align-items:center; }
+.club-hero-media{ position:relative; display:flex; align-items:center; justify-content:center; min-height:clamp(250px,30vw,400px); }
+.club-hero-media .kring2{ position:absolute; width:min(80%,360px); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 42% 36%, #fff, var(--paper-deep)); box-shadow:0 22px 50px rgba(27,36,114,.14); }
+.club-hero-media img{ position:relative; z-index:1; width:min(112%,540px); height:auto; animation:polyFloat 8s ease-in-out infinite; }
+@keyframes polyFloat{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-10px) rotate(1.5deg); } }
+.histo-img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--r); filter:grayscale(1) contrast(1.04); }
+.moral-head{ text-align:center; max-width:30ch; margin:0 auto clamp(34px,4vw,56px); }
+.samurai-medal{ display:block; width:clamp(120px,13vw,168px); aspect-ratio:1; margin:0 auto clamp(18px,2.4vw,28px); border-radius:50%; overflow:hidden; background:#e8bd8b; box-shadow:0 16px 40px rgba(0,0,0,.32), inset 0 0 0 1px rgba(255,255,255,.12); }
+.samurai-medal img{ width:138%; max-width:138%; height:100%; object-fit:cover; object-position:48% 30%; }
+.moral-head .big{ font-family:var(--serif); font-size:clamp(1.6rem,3.4vw,2.6rem); line-height:1.2; }
+.histoire{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(30px,5vw,72px); align-items:start; }
+.histoire .ph{ aspect-ratio:4/3; }
+.lieux{ display:grid; grid-template-columns:repeat(2,1fr); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.lieu{ padding:clamp(24px,2.6vw,40px); border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.lieu .lnum{ font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; color:var(--red); }
+.lieu h3{ font-size:1.45rem; margin-top:.5em; }
+.lieu address{ font-style:normal; color:var(--ink-2); font-size:.95rem; margin-top:.6em; line-height:1.6; }
+.lieu .tag{ margin-top:1em; }
+.prof-bio .ph{ aspect-ratio:3/4; }
+@media (max-width:760px){ .histoire{ grid-template-columns:1fr; } .lieux{ grid-template-columns:1fr; } .club-hero-inner{ grid-template-columns:1fr; } .club-hero-media{ order:-1; min-height:240px; } }
+</style>
+</head>
+<body data-page="club">
+
+<header class="page-hero club-hero">
+  <div class="wrap club-hero-inner">
+    <div class="club-hero-copy">
+      <span class="label reveal"><span class="num">02</span> Le club</span>
+      <h1 class="ttl reveal d1">Une pratique.<br>Un art de vie.<br>Un code <span class="brush-word">moral<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</h1>
+      <p class="intro lead reveal d2">À l’ACB Judo, on apprend à tomber et à se relever, à respecter l’autre et à se dépasser. Le judo y est transmis comme une école de la vie — pour les petits comme pour les grands.</p>
+    </div>
+    <div class="club-hero-media reveal d2">
+      <span class="kring2"></span>
+      <img src="assets/poly-throw.webp" alt="Judokas illustrés — style low-poly">
+    </div>
+  </div>
+</header>
+
+<!-- CODE MORAL -->
+<section class="section band-dark">
+  <div class="wrap">
+    <div class="moral-head reveal">
+      <span class="samurai-medal" aria-hidden="true"><img src="assets/samurai.webp" alt=""></span>
+      <span class="label" style="color:#9b968c;justify-content:center"><span class="num">柔道</span> Le code moral</span>
+      <p class="big" style="margin-top:.7em;color:#fff">Sept valeurs transmises à chaque cours, du tatami à la vie quotidienne.</p>
+    </div>
+    <div class="moral reveal d1" style="border-color:#2b3486">
+      <div class="m" style="border-color:#2b3486"><div class="jp">礼</div><div class="fr" style="color:#efece6">Politesse</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">勇</div><div class="fr" style="color:#efece6">Courage</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">友</div><div class="fr" style="color:#efece6">Amitié</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">制</div><div class="fr" style="color:#efece6">Contrôle de soi</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">誠</div><div class="fr" style="color:#efece6">Sincérité</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">謙</div><div class="fr" style="color:#efece6">Modestie</div></div>
+      <div class="m" style="border-color:#2b3486"><div class="jp">誉</div><div class="fr" style="color:#efece6">Honneur</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTOIRE -->
+<section class="section wrap">
+  <div class="histoire">
+    <figure class="reveal" style="margin:0">
+      <img class="histo-img" src="https://loremflickr.com/820/620/judo,dojo/all?lock=71" alt="Vie du club">
+    </figure>
+    <div class="flow reveal d1">
+      <span class="label"><span class="num">01</span> Notre histoire</span>
+      <h2 class="h2" style="max-width:18ch">Un club de quartier, ancré à Bobigny.</h2>
+      <p>L’ACB Judo fait vivre le judo à Bobigny depuis de nombreuses années, au sein de l’Athlétic Club de Bobigny. Un club familial où plusieurs générations se croisent sur le tatami, du baby-judo aux adultes.</p>
+      <p>Le <strong>Dojo Malick Amedah</strong> reste un lieu symbolique du club, où s’est transmis l’esprit du judo balbynien. En 2025, le club a aussi investi <strong>Le Prisme</strong>, nouvel espace de pratique inclusif inauguré à Bobigny.</p>
+      <p class="muted small">Texte à affiner avec le club — histoire détaillée, palmarès et dates à confirmer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÉQUIPE -->
+<section class="section wrap" id="equipe">
+  <div class="sec-head reveal" style="margin-bottom:clamp(28px,3.5vw,48px)">
+    <div>
+      <span class="label"><span class="num">03</span> L’équipe pédagogique</span>
+      <h2 class="h2" style="margin-top:.5em;max-width:20ch">Des professeurs diplômés, investis pour le club.</h2>
+    </div>
+  </div>
+  <div class="profs reveal d1">
+    <figure class="card-prof prof-bio"><div class="ph" data-label="Portrait — Ludovic"><span class="tick"></span></div><h3>Ludovic Amedah</h3><div class="role">Responsable · cours adultes (Timbaud)</div><span class="grade">Grade à confirmer</span></figure>
+    <figure class="card-prof prof-bio"><div class="ph" data-label="Portrait — Namyck"><span class="tick"></span></div><h3>Namyck Bouzera</h3><div class="role">Professeur · enfants (Timbaud)</div><span class="grade">Grade à confirmer</span></figure>
+    <figure class="card-prof prof-bio"><div class="ph" data-label="Portrait — Teddy"><span class="tick"></span></div><h3>Teddy Grillon</h3><div class="role">Professeur (Marcel Cachin)</div><span class="grade">Grade à confirmer</span></figure>
+    <figure class="card-prof prof-bio"><div class="ph" data-label="Portrait — Laetitia"><span class="tick"></span></div><h3>Laetitia Blanchard</h3><div class="role">Professeure (Paul Éluard)</div><span class="grade">Grade à confirmer</span></figure>
+  </div>
+</section>
+
+<!-- LIEUX -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(26px,3vw,42px)">
+    <div>
+      <span class="label"><span class="num">04</span> Les lieux</span>
+      <h2 class="h2" style="margin-top:.5em;max-width:18ch">Quatre tatamis dans Bobigny.</h2>
+    </div>
+    <a class="tlink" href="cours.html">Voir les horaires par lieu <span class="arw">→</span></a>
+  </div>
+  <div class="lieux reveal d1">
+    <div class="lieu"><span class="lnum">01</span><h3>Gymnase Jean-Pierre Timbaud</h3><address>160 rue Lacide Villard<br>93000 Bobigny</address><span class="tag">Enfants · Adultes</span></div>
+    <div class="lieu"><span class="lnum">02</span><h3>Gymnase Paul Éluard</h3><address>Bobigny (93)</address><span class="tag">Baby · Enfants · Fitness · Prépa</span></div>
+    <div class="lieu"><span class="lnum">03</span><h3>Gymnase Marcel Cachin</h3><address>Bobigny (93)</address><span class="tag">Baby · Éveil · Enfants</span></div>
+    <div class="lieu"><span class="lnum">04</span><h3>Le Prisme</h3><address>Bobigny (93)<br>Inauguré en 2025</address><span class="tag">Espace inclusif</span></div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

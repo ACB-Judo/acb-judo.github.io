@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarifs & inscription · ACB Judo</title>
+<meta name="description" content="Tarifs de l'ACB Judo et modalités d'inscription. Cotisation annuelle par tranche d'âge, pièces à fournir, fiche d'inscription.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.th-hero{ padding-bottom:clamp(16px,3vw,34px); }
+.th-hero-inner{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(28px,5vw,60px); align-items:center; }
+.th-media{ position:relative; display:flex; align-items:center; justify-content:center; min-height:clamp(220px,26vw,340px); }
+.th-media .ring{ position:absolute; width:min(78%,330px); aspect-ratio:1; border-radius:50%; background:#fff; box-shadow:0 20px 46px rgba(27,36,114,.12); }
+.th-media img{ position:relative; z-index:1; width:min(96%,420px); height:auto; }
+@media (max-width:760px){ .th-hero-inner{ grid-template-columns:1fr; } .th-media{ order:-1; min-height:200px; } }
+</style>
+</head>
+<body data-page="tarifs">
+
+<header class="page-hero th-hero">
+  <div class="wrap th-hero-inner">
+    <div>
+      <span class="label reveal"><span class="num">05</span> Tarifs & inscription</span>
+      <h1 class="ttl reveal d1">Une cotisation simple,<br>tout <span class="brush-word">compris<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</h1>
+      <p class="intro lead reveal d2">Une seule cotisation annuelle par licencié, selon la tranche d’âge. Tarifs de la saison en cours — à confirmer pour 2025/26.</p>
+    </div>
+    <div class="th-media reveal d2"><span class="ring"></span><img src="assets/poly-duo.webp" alt="Judokas — illustration low-poly"></div>
+  </div>
+</header>
+
+<!-- TARIFS -->
+<section class="section wrap">
+  <div class="tarifs reveal">
+    <div class="tcard"><span class="tname">Baby & Éveil</span><span class="tage">3 – 5 ans</span><div class="tprice">160<span class="cur">€</span></div><p class="tper">par an · saison complète</p></div>
+    <div class="tcard"><span class="tname">Enfants</span><span class="tage">6 – 13 ans</span><div class="tprice">200<span class="cur">€</span></div><p class="tper">par an · saison complète</p></div>
+    <div class="tcard"><span class="tname">Ados</span><span class="tage">14 ans</span><div class="tprice">230<span class="cur">€</span></div><p class="tper">par an · saison complète</p></div>
+    <div class="tcard"><span class="tname">Adultes</span><span class="tage">15 ans et +</span><div class="tprice">240<span class="cur">€</span></div><p class="tper">par an · saison complète</p></div>
+  </div>
+  <div class="reveal d1" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:clamp(20px,2.5vw,30px)">
+    <span class="tag">+ 10 € pour les non-Balbyniens</span>
+    <span class="muted small">Licence & assurance FFJudo à confirmer · Tarifs 2025/26 en attente de validation du club.</span>
+  </div>
+</section>
+
+<!-- INSCRIPTION -->
+<section class="section band-dark" id="inscription">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:clamp(34px,4vw,56px)">
+      <div>
+        <span class="label"><span class="num">06</span> Pièces à fournir</span>
+        <h2 class="h2" style="margin-top:.5em;max-width:16ch">Trois pièces pour rejoindre le tatami.</h2>
+      </div>
+      <p class="lead" style="max-width:34ch">Le dossier se remplit et se dépose directement au gymnase, pendant les créneaux de cours.</p>
+    </div>
+    <div class="pieces reveal d1">
+      <div class="pc"><span class="pn">01</span><h4>Dossier d’inscription</h4><p>La fiche du club complétée et signée par le licencié ou son responsable légal.</p></div>
+      <div class="pc"><span class="pn">02</span><h4>Une photo d’identité</h4><p>Récente, pour la licence FFJudo et la carte de membre du club.</p></div>
+      <div class="pc"><span class="pn">03</span><h4>Certificat médical</h4><p>De non contre-indication à la pratique du judo, ou questionnaire de santé selon l’âge.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT S'INSCRIRE -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(30px,4vw,50px)">
+    <div>
+      <span class="label"><span class="num">07</span> Comment s’inscrire</span>
+      <h2 class="h2" style="margin-top:.5em;max-width:18ch">Trois étapes, et c’est parti.</h2>
+    </div>
+  </div>
+  <div class="steps reveal d1">
+    <div class="step"><span class="sn">Étape 01</span><h4>Télécharger la fiche</h4><p>Récupérez le dossier d’inscription au format PDF et remplissez-le à la maison.</p></div>
+    <div class="step"><span class="sn">Étape 02</span><h4>Venir pendant un cours</h4><p>Présentez-vous au gymnase de votre choix, sur l’un des créneaux correspondant à l’âge du licencié.</p></div>
+    <div class="step"><span class="sn">Étape 03</span><h4>Déposer le dossier</h4><p>Remettez les trois pièces au professeur, réglez la cotisation, et bienvenue au club&nbsp;!</p></div>
+  </div>
+  <div class="reveal d2" style="margin-top:clamp(34px,4vw,52px);display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+    <a class="btn btn-red" href="#" onclick="alert('Fiche d’inscription PDF — à fournir par le club.');return false;">Télécharger la fiche d’inscription <span class="arw">→</span></a>
+    <a class="btn btn-ghost" href="cours.html">Voir les horaires</a>
+    <a class="tlink" href="contact.html" style="margin-left:6px">Une question ? Nous contacter <span class="arw">→</span></a>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

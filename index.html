@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACB Judo · Le judo pour tous à Bobigny</title>
+<meta name="description" content="ACB Judo — section judo de l'Athlétic Club de Bobigny. Le judo pour tous, dès 2 ans et demi, sur 4 dojos de Bobigny.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+/* ============ HERO (immersif, sombre) ============ */
+.xhero{ position:relative; min-height:100svh; background:var(--night); color:#fff; overflow:hidden; display:flex; flex-direction:column; }
+.xhero .slot{ position:absolute; inset:0; width:100%; height:100%; --is-radius:0; }
+.xhero .veil{ position:absolute; inset:0; z-index:1; background:
+   linear-gradient(90deg, rgba(18,24,82,.93) 0%, rgba(18,24,82,.72) 42%, rgba(18,24,82,.34) 100%),
+   linear-gradient(0deg, rgba(18,24,82,.9) 0%, rgba(18,24,82,0) 38%); }
+.xhero .grain{ position:absolute; inset:0; z-index:1; opacity:.5; pointer-events:none;
+   background:repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 1px, transparent 1px 9px); }
+.xhero .enso-big{ position:absolute; right:-7%; top:50%; transform:translateY(-50%); z-index:1; width:min(58vh,600px); height:min(58vh,600px); opacity:.82; pointer-events:none; animation:ensoFloat 9s ease-in-out infinite; }ease-in-out infinite; }
+@keyframes ensoFloat{ 0%,100%{ transform:translateY(-50%) rotate(0deg); } 50%{ transform:translateY(-53%) rotate(4deg); } }
+.xhero .kanji-bg{ position:absolute; right:3%; bottom:-6%; z-index:1; font-family:var(--serif); font-weight:700; font-size:min(40vw,560px); line-height:.7; color:#fff; opacity:.035; pointer-events:none; }
+
+.xhero-inner{ position:relative; z-index:2; flex:1; display:flex; align-items:flex-end; padding:clamp(120px,16vh,170px) var(--gut) 0; }
+.xhero-eyebrow{ display:inline-flex; align-items:center; gap:.7em; font-family:var(--mono); font-size:.74rem; letter-spacing:.26em; text-transform:uppercase; color:#fff; }
+.xhero-eyebrow .jp{ font-family:var(--serif); color:var(--red); font-size:1.1rem; letter-spacing:.1em; }
+.xhero-eyebrow::before{ content:""; width:34px; height:1px; background:var(--red); }
+.xhero-title{ font-family:var(--serif); font-weight:600; font-size:clamp(2.5rem,6.4vw,5.7rem); line-height:1.0; letter-spacing:-.025em; margin:.32em 0 0; }
+.xhero-title .l{ display:block; white-space:nowrap; }
+.xhero-title .red{ color:var(--red); position:relative; }
+.ubrush{ position:absolute; left:-4%; bottom:-.28em; width:108%; height:.5em; pointer-events:none; display:block; }
+.brush-word{ position:relative; white-space:nowrap; }
+.xhero-sub{ margin-top:clamp(26px,3vw,38px); font-size:clamp(1.05rem,1.5vw,1.32rem); color:#cfcabf; max-width:34ch; }
+.xhero-cta{ margin-top:clamp(26px,3vw,38px); margin-bottom:clamp(22px,5vh,52px); display:flex; gap:14px; flex-wrap:wrap; }
+
+.xhero-foot{ position:relative; z-index:2; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+   padding:18px var(--gut) 22px; border-top:1px solid rgba(255,255,255,.13); }
+.facts{ display:flex; gap:clamp(14px,2.5vw,40px); flex-wrap:wrap; }
+.fact{ display:flex; align-items:baseline; gap:.55em; font-size:.92rem; color:#e7e3da; }
+.fact b{ font-family:var(--serif); font-weight:600; color:#fff; }
+.fact .d{ color:var(--red); }
+.vlabel{ font-family:var(--mono); font-size:.66rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.5); white-space:nowrap; }
+.xhero .slot::part(placeholder){ color:rgba(255,255,255,.4); }
+
+body[data-hero-dark] .btn-ghost{ --fg:#fff; --bd:rgba(255,255,255,.42); }
+body[data-hero-dark] .btn-ghost:hover{ --bg:#fff; --fg:var(--ink); --bd:#fff; }
+
+/* ============ DISCIPLINES (interactif) ============ */
+.disc{ display:grid; grid-template-columns:1.05fr 1fr; min-height:84vh; }
+.disc-left{ padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px); display:flex; flex-direction:column; justify-content:center; }
+.disc-list{ list-style:none; margin:clamp(20px,3vw,40px) 0 0; padding:0; }
+.disc-item{ display:flex; align-items:baseline; gap:18px; padding:clamp(10px,1.3vw,17px) 0; border-bottom:1px solid var(--line); cursor:pointer;
+   color:var(--ink-3); transition:color .3s var(--ease), padding-left .4s var(--ease); }
+.disc-item .dn{ font-family:var(--mono); font-size:.78rem; letter-spacing:.06em; opacity:.6; transition:color .3s; }
+.disc-item .dname{ font-family:var(--serif); font-weight:600; font-size:clamp(1.35rem,2.5vw,2.15rem); line-height:1.04; white-space:nowrap; transition:color .3s var(--ease); }
+.disc-item:hover{ color:var(--ink-2); }
+.disc-item.active{ color:var(--ink); padding-left:14px; }
+.disc-item.active .dname{ color:var(--ink); }
+.disc-item.active .dn{ color:var(--red); opacity:1; }
+.disc-item.active::marker{ color:var(--red); }
+.disc-stage{ position:relative; background:var(--night); color:#fff; overflow:hidden; display:flex; }
+.disc-stage .ds-img{ position:absolute; inset:0; width:100%; height:100%; background-size:cover; background-position:center; filter:grayscale(1) contrast(1.05); transition:opacity .35s var(--ease); }
+.disc-stage .ds-veil{ position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(18,24,82,.92), rgba(18,24,82,.45) 60%, rgba(18,24,82,.5)); }
+.disc-stage .ds-num{ position:absolute; top:clamp(20px,3vw,40px); right:clamp(24px,3vw,44px); z-index:2; font-family:var(--serif); font-weight:700; font-size:clamp(4rem,11vw,10rem); line-height:.8; color:rgba(255,255,255,.1); }
+.disc-stage .ds-body{ position:relative; z-index:2; margin-top:auto; padding:clamp(28px,3.4vw,52px); }
+.ds-age{ display:inline-block; font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:#fff; background:var(--red); padding:.5em 1em; border-radius:100px; }
+.ds-name{ font-family:var(--serif); font-weight:600; font-size:clamp(2rem,3.6vw,3rem); margin-top:.6em; line-height:1; }
+.ds-line{ margin-top:.7em; color:#cfcabf; max-width:38ch; font-size:1.02rem; }
+.ds-fade{ transition:opacity .35s var(--ease); }
+
+/* ============ PORTES (3 entrées) ============ */
+.doors{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:clamp(16px,2vw,22px) var(--gut) clamp(28px,4vw,48px); background:var(--paper); }
+.door{ position:relative; min-height:clamp(280px,38vh,440px); padding:clamp(26px,2.6vw,40px); display:flex; flex-direction:column; justify-content:space-between;
+   color:#fff; overflow:hidden; border-radius:var(--r-lg); transition:transform .45s var(--bounce), box-shadow .45s var(--ease); box-shadow:0 6px 22px rgba(18,24,82,.12); }
+.door:hover{ transform:translateY(-7px); box-shadow:0 18px 40px rgba(18,24,82,.22); }
+.door .d-bg{ position:absolute; inset:0; background:var(--night); z-index:0; border-radius:inherit; transition:transform .7s var(--ease); }
+.door:nth-child(2) .d-bg{ background:#232c82; }
+.door .d-bg::after{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 1px, transparent 1px 10px); }
+.door:hover .d-bg{ transform:scale(1.04); }
+.door > *{ position:relative; z-index:1; }
+.door .d-num{ font-family:var(--mono); font-size:.74rem; letter-spacing:.16em; color:var(--red); }
+.door .d-ttl{ font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,2.6vw,2.4rem); line-height:1.05; }
+.door .d-go{ display:inline-flex; align-items:center; gap:.6em; font-size:.95rem; color:#e7e3da; }
+.door .d-go .arw{ color:var(--red); transition:transform .4s var(--ease); }
+.door:hover .d-go .arw{ transform:translateX(6px); }
+
+/* ============ FRISE ENCRE / PROVERBE ============ */
+.ink-band{ position:relative; background:var(--paper-deep); padding:clamp(50px,7vw,104px) var(--gut); overflow:hidden; }
+.ink-band .ink-frieze-bg{ position:absolute; left:50%; top:54%; transform:translate(-50%,-50%); width:min(120%,1320px); height:auto; opacity:.07; pointer-events:none; }
+.ink-band-inner{ position:relative; z-index:1; max-width:780px; margin:0 auto; text-align:center; }
+.ink-eyebrow{ display:inline-flex; align-items:center; gap:.7em; font-family:var(--mono); font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep); }
+.ink-eyebrow::before,.ink-eyebrow::after{ content:""; width:24px; height:1px; background:var(--gold); }
+.ink-proverb{ font-family:var(--serif); font-weight:600; font-size:clamp(2.2rem,6vw,4rem); color:var(--ink); letter-spacing:.1em; margin-top:.5em; line-height:1; }
+.ink-quote{ font-family:var(--serif); font-style:italic; font-size:clamp(1.5rem,3.2vw,2.4rem); color:var(--red); margin-top:.5em; line-height:1.12; }
+.ink-sub{ color:var(--ink-2); max-width:48ch; margin:1.1em auto 0; font-size:clamp(1rem,1.4vw,1.12rem); }
+.ink-frieze-main{ display:block; width:min(96%,940px); height:auto; margin:clamp(26px,3.5vw,46px) auto 0; }
+@media (max-width:680px){ .ink-frieze-main{ width:100%; } }
+
+/* ============ MARQUEE code moral ============ */
+.moral-band{ background:var(--paper); border-block:1px solid var(--line); padding:clamp(22px,3vw,34px) 0; overflow:hidden; }
+.marquee{ display:flex; gap:0; white-space:nowrap; width:max-content; animation:scrollx 32s linear infinite; }
+.marquee .mw{ display:inline-flex; align-items:center; gap:.5em; font-family:var(--serif); font-size:clamp(1.4rem,2.4vw,2.1rem); font-weight:600; padding:0 clamp(20px,3vw,46px); }
+.marquee .mw .jp{ color:var(--red); }
+.marquee .sepd{ color:var(--line); font-size:1.4rem; }
+@keyframes scrollx{ to{ transform:translateX(-50%); } }
+.moral-band:hover .marquee{ animation-play-state:paused; }
+
+/* ============ CTA band ============ */
+.cta-band{ position:relative; background:var(--night); color:#fff; overflow:hidden; }
+.cta-band .k{ position:absolute; right:-2%; top:50%; transform:translateY(-50%); font-family:var(--serif); font-weight:700; font-size:min(34vw,420px); line-height:.7; color:#fff; opacity:.08; pointer-events:none; }
+.cta-inner{ position:relative; z-index:1; padding:clamp(56px,9vw,120px) var(--gut); display:flex; flex-direction:column; align-items:flex-start; gap:clamp(20px,3vw,32px); }
+.cta-band h2{ font-size:clamp(2.4rem,6vw,5rem); line-height:.98; max-width:16ch; }
+.cta-band .btn-paper{ --bg:#fff; --fg:var(--red); --bd:#fff; }
+.cta-band .btn-paper:hover{ --bg:var(--night); --fg:#fff; --bd:var(--night); }
+
+/* ============ LES PLUS PETITS (kids) ============ */
+.kids{ position:relative; background:var(--gold-wash); overflow:hidden; padding-block:clamp(56px,8vw,120px); }
+.kids .blob{ position:absolute; border-radius:50%; pointer-events:none; }
+.kids .b1{ width:clamp(160px,22vw,300px); height:clamp(160px,22vw,300px); background:rgba(201,138,46,.18); top:-8%; right:10%; }
+.kids .b2{ width:120px; height:120px; background:rgba(179,50,42,.12); bottom:6%; left:5%; }
+.kids .b3{ width:60px; height:60px; border:3px solid rgba(201,138,46,.4); top:18%; left:8%; }
+.kids-inner{ position:relative; z-index:1; display:grid; grid-template-columns:1.02fr 1fr; gap:clamp(30px,5vw,68px); align-items:center; }
+.label.gold{ color:var(--gold-deep); }
+.label.gold .num{ color:var(--gold); }
+.label.gold::before{ background:var(--gold); }
+.kids-h{ font-size:clamp(1.7rem,3.4vw,2.7rem); line-height:1.12; margin:.5em 0 .66em; }
+.kids .lead{ color:var(--ink-2); max-width:42ch; }
+.kids-cta{ margin-top:clamp(22px,3vw,32px); display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.kids-illus{ position:relative; display:flex; align-items:center; justify-content:center; min-height:clamp(300px,38vw,460px); }
+.kids-illus .kring{ position:absolute; width:min(86%,400px); aspect-ratio:1; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 1px rgba(201,138,46,.3), 0 24px 54px rgba(60,42,12,.13); }
+.kids-illus .kphoto{ position:relative; z-index:1; width:min(82%,380px); aspect-ratio:1; object-fit:cover; object-position:center 30%; border-radius:50%; box-shadow:0 22px 50px rgba(60,42,12,.18); outline:8px solid #fffdf8; animation:inkFloat 7s ease-in-out infinite; }
+.kids-illus .ink{ position:relative; z-index:1; width:min(104%,560px); height:auto; animation:inkFloat 7s ease-in-out infinite; }
+@keyframes inkFloat{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-10px) rotate(-1.5deg); } }
+.kids-note{ position:relative; z-index:1; text-align:center; margin-top:clamp(22px,3vw,38px); font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--gold-deep); opacity:.85; }
+
+@media (max-width:860px){
+  .disc{ grid-template-columns:1fr; }
+  .disc-stage{ min-height:60vh; order:-1; }
+  .doors{ grid-template-columns:1fr; }
+  .door{ border-right:0; border-bottom:0; }
+  .kids-inner{ grid-template-columns:1fr; }
+  .xhero .enso-big{ width:60vw; right:-18%; opacity:.6; }
+}
+</style>
+</head>
+<body data-page="accueil" data-hero data-hero-dark data-kanji="on">
+
+<!-- ============ HERO ============ -->
+<section class="xhero" data-screen-label="Accueil — Hero">
+  <div class="slot" id="hero-slot" style="background-image:url('assets/photo-throw.webp');background-size:cover;background-position:center 28%;filter:grayscale(1) contrast(1.04)"></div>
+  <div class="veil"></div>
+  <div class="grain"></div>
+  <img class="enso-big" src="assets/enso.webp" alt="" aria-hidden="true">
+  <div class="kanji-bg" aria-hidden="true">柔</div>
+
+  <div class="xhero-inner">
+    <div>
+      <span class="xhero-eyebrow reveal"><span class="jp">柔道</span> ACB Judo · Bobigny (93)</span>
+      <h1 class="xhero-title reveal d1"><span class="l">Le judo,</span><span class="l">pour <span class="red">tous<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</span></h1>
+      <p class="xhero-sub reveal d2">Dès 2 ans et demi. Sur quatre dojos de Bobigny. En loisir comme en compétition.</p>
+      <div class="xhero-cta reveal d3">
+        <a class="btn btn-red" href="tarifs.html#inscription">S’inscrire <span class="arw">→</span></a>
+        <a class="btn btn-ghost" href="cours.html">Voir les cours</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="xhero-foot reveal d3">
+    <div class="facts">
+      <span class="fact"><b>4</b> dojos</span><span class="fact d">·</span>
+      <span class="fact">dès <b>2½</b> ans</span><span class="fact d">·</span>
+      <span class="fact">loisir <b>&</b> compétition</span><span class="fact d">·</span>
+      <span class="fact">affilié <b>FFJudo</b></span>
+    </div>
+    <span class="vlabel">柔 — la voie de la souplesse</span>
+  </div>
+</section>
+
+<!-- ============ DISCIPLINES ============ -->
+<section class="disc" data-screen-label="Accueil — Disciplines" aria-label="Les cours">
+  <div class="disc-left">
+    <span class="label reveal"><span class="num">01</span> Les cours</span>
+    <ul class="disc-list reveal d1" id="disc-list"></ul>
+  </div>
+  <div class="disc-stage" id="disc-stage">
+    <div class="ds-img" id="ds-img"></div>
+    <div class="ds-veil"></div>
+    <div class="ds-num ds-fade" id="ds-num">01</div>
+    <div class="ds-body">
+      <span class="ds-age ds-fade" id="ds-age"></span>
+      <h3 class="ds-name ds-fade" id="ds-name"></h3>
+      <p class="ds-line ds-fade" id="ds-line"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE — code moral ============ -->
+<div class="moral-band" aria-label="Le code moral du judo">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<!-- ============ LES PLUS PETITS ============ -->
+<section class="kids" data-screen-label="Accueil — Les plus petits">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="wrap kids-inner">
+    <div class="kids-copy reveal">
+      <span class="label gold"><span class="num">柔</span> Les plus petits</span>
+      <h2 class="kids-h">On apprend le judo<br>en <span class="brush-word">s’amusant<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</h2>
+      <p class="lead">Dès 2 ans et demi : équilibre, respect et confiance en soi — par le jeu, pieds nus sur le tatami. Les premières chutes deviennent un jeu, les copains une équipe.</p>
+      <div class="kids-cta">
+        <a class="btn btn-gold" href="cours.html">Baby & Éveil judo <span class="arw">→</span></a>
+        <span class="tag">2½ – 5 ans</span>
+      </div>
+    </div>
+    <div class="kids-illus reveal d1">
+      <span class="kring"></span>
+      <img class="kphoto" src="assets/kids-cartoon.webp" alt="Deux enfants au judo, illustration">
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRISE ENCRE / PROVERBE ============ -->
+<section class="ink-band" data-screen-label="Accueil — Proverbe">
+  <img class="ink-frieze-bg" src="assets/ink-frieze.webp" alt="" aria-hidden="true">
+  <div class="ink-band-inner reveal">
+    <span class="ink-eyebrow">柔道 · l’esprit</span>
+    <p class="ink-proverb">七転び八起き</p>
+    <h2 class="ink-quote">Tomber sept fois,<br>se relever huit.</h2>
+    <p class="ink-sub">Au judo, on grandit autant en tombant qu’en gagnant. Ici, on apprend d’abord la persévérance, le respect et le goût de l’effort — le reste suit.</p>
+    <img class="ink-frieze-main reveal d1" src="assets/ink-frieze.webp" alt="Trois prises de judo illustrées à l’encre">
+  </div>
+</section>
+
+<!-- ============ PORTES ============ -->
+<section class="doors" aria-label="Accès rapides">
+  <a class="door reveal" href="cours.html"><div class="d-bg" style="background-image:linear-gradient(rgba(18,24,82,.42),rgba(18,24,82,.8)),url('assets/photo-throw.webp');background-size:cover;background-position:center;filter:grayscale(1)"></div><span class="d-num">→ 02</span><div><div class="d-ttl">Cours &<br>horaires</div></div><span class="d-go">Planning par dojo & par âge <span class="arw">→</span></span></a>
+  <a class="door reveal d1" href="tarifs.html"><div class="d-bg" style="background-image:linear-gradient(rgba(18,24,82,.42),rgba(18,24,82,.8)),url('assets/photo-teacher.webp');background-size:cover;background-position:center 20%;filter:grayscale(1)"></div><span class="d-num">→ 03</span><div><div class="d-ttl">Tarifs &<br>inscription</div></div><span class="d-go">Cotisation & comment s’inscrire <span class="arw">→</span></span></a>
+  <a class="door reveal d2" href="club.html"><div class="d-bg" style="background-image:linear-gradient(rgba(18,24,82,.42),rgba(18,24,82,.8)),url('assets/photo-kids.webp');background-size:cover;background-position:center 22%;filter:grayscale(1)"></div><span class="d-num">→ 04</span><div><div class="d-ttl">Le club &<br>les lieux</div></div><span class="d-go">Équipe, valeurs, 4 dojos <span class="arw">→</span></span></a>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-band" id="inscription">
+  <div class="k" aria-hidden="true">道</div>
+  <div class="cta-inner">
+    <span class="label reveal" style="color:rgba(255,255,255,.8)"><span class="num" style="color:#fff">柔道</span> Rejoindre le club</span>
+    <h2 class="reveal d1">Premier cours offert. Venez essayer.</h2>
+    <div class="reveal d2" style="display:flex;gap:14px;flex-wrap:wrap">
+      <a class="btn btn-paper" href="tarifs.html#inscription">S’inscrire <span class="arw">→</span></a>
+      <a class="btn btn-ghost" href="contact.html" style="--fg:#fff;--bd:rgba(255,255,255,.5)">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ scripts ============ -->
+<script>
+(function(){
+  var D = [
+    {n:'Baby Judo', age:'2½ – 4 ans', line:'Éveil corporel par le jeu : équilibre, premiers déplacements, vie en groupe.', img:'assets/photo-babyjudo.webp'},
+    {n:'Éveil Judo', age:'4 – 5 ans', line:'Motricité, coordination, découverte du salut et des règles du tatami.', img:'assets/photo-teacher.webp'},
+    {n:'Judo enfants', age:'6 – 13 ans', line:'Technique, chutes, premières ceintures et compétitions amicales.', img:'assets/photo-throw.webp'},
+    {n:'Ados & adultes', age:'14 ans et +', line:'Perfectionnement, randori et pratique loisir pour la forme.', img:'assets/photo-ados.webp'},
+    {n:'Prépa compétition', age:'sur sélection', line:'Préparation physique et tactique pour tournois et passages de grade.', img:'assets/photo-prepa.webp'},
+    {n:'Fitness · Taïso', age:'adultes', line:'Renforcement, souplesse et cardio inspirés du judo, sans opposition.', img:'assets/photo-fitness.webp'}
+  ];
+  var list = document.getElementById('disc-list');
+  list.innerHTML = D.map(function(d,i){
+    return '<li class="disc-item'+(i===0?' active':'')+'" data-i="'+i+'"><span class="dn">0'+(i+1)+'</span><span class="dname">'+d.n+'</span></li>';
+  }).join('');
+  var img=document.getElementById('ds-img'), num=document.getElementById('ds-num'), age=document.getElementById('ds-age'), nm=document.getElementById('ds-name'), ln=document.getElementById('ds-line');
+  var fades=[num,age,nm,ln];
+  function set(i){
+    fades.forEach(function(e){ e.style.opacity=0; });
+    if(img) img.style.opacity=.35;
+    setTimeout(function(){
+      num.textContent='0'+(i+1); age.textContent=D[i].age; nm.textContent=D[i].n; ln.textContent=D[i].line;
+      if(img){ img.style.backgroundImage="url('"+D[i].img+"')"; img.style.opacity=1; }
+      fades.forEach(function(e){ e.style.opacity=1; });
+    },180);
+  }
+  set(0);
+  list.addEventListener('mouseover', function(e){ var it=e.target.closest('.disc-item'); if(!it) return; activate(it); });
+  list.addEventListener('click', function(e){ var it=e.target.closest('.disc-item'); if(!it) return; activate(it); });
+  function activate(it){
+    if(it.classList.contains('active')) return;
+    list.querySelectorAll('.disc-item').forEach(function(x){ x.classList.remove('active'); });
+    it.classList.add('active'); set(+it.dataset.i);
+  }
+  // marquee
+  var vals=[['礼','Politesse'],['勇','Courage'],['友','Amitié'],['制','Contrôle de soi'],['誠','Sincérité'],['謙','Modestie'],['誉','Honneur']];
+  function chunk(){ return vals.map(function(v){ return '<span class="mw"><span class="jp">'+v[0]+'</span> '+v[1]+'</span><span class="sepd">/</span>'; }).join(''); }
+  document.getElementById('marquee').innerHTML = chunk()+chunk();
+})();
+</script>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

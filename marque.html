@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Identité & design system · ACB Judo</title>
+<meta name="description" content="Identité visuelle de l'ACB Judo : trois directions de logo, palette, typographie et composants réutilisables.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+/* logo lab */
+.logolab{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.5vw,32px); }
+.logodir{ border:1px solid var(--line); }
+.logodir .stage{ aspect-ratio:5/3; display:flex; align-items:center; justify-content:center; --lfg:var(--ink); --lac:var(--red); background:var(--paper-pure); }
+.logodir .meta{ padding:16px 18px; border-top:1px solid var(--line); }
+.logodir .meta .dn{ font-family:var(--serif); font-weight:600; font-size:1.1rem; }
+.logodir .meta .dx{ font-size:.85rem; color:var(--ink-3); margin-top:.25em; }
+.logodir .chips-mono{ display:flex; gap:10px; padding:0 18px 18px; }
+.swatch-mini{ flex:1; aspect-ratio:3/2; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); }
+.swatch-mini.s-ink{ background:var(--night); --lfg:#fff; --lac:#fff; border-color:var(--night); }
+.swatch-mini.s-red{ background:var(--red); --lfg:#fff; --lac:#fff; border-color:var(--red); }
+.swatch-mini .logo{ transform:scale(.62); }
+
+/* logo lockups */
+.logo{ display:inline-flex; align-items:center; gap:13px; color:var(--lfg); }
+.logo .lmark{ width:42px; height:42px; }
+.logo .lword{ display:flex; flex-direction:column; line-height:.9; }
+.logo .lw1{ font-family:var(--serif); font-weight:700; font-size:1.55rem; letter-spacing:.02em; color:var(--lfg); }
+.logo .lw2{ display:flex; align-items:center; gap:.3em; font-family:var(--mono); font-size:.7rem; letter-spacing:.4em; text-transform:uppercase; margin-top:3px; color:var(--lfg); }
+.logo .ldot{ width:5px; height:5px; background:var(--lac); border-radius:50%; }
+/* B monogram */
+.logoB{ flex-direction:column; gap:9px; }
+.logoB .lbadge{ border:2px solid var(--lfg); padding:.32em .5em .28em; }
+.logoB .lb-acb{ font-family:var(--serif); font-weight:700; font-size:1.7rem; letter-spacing:.06em; color:var(--lfg); }
+.logoB .lb-judo{ display:flex; align-items:center; gap:.5em; font-family:var(--mono); font-size:.72rem; letter-spacing:.46em; text-transform:uppercase; color:var(--lfg); }
+.logoB .lb-judo::before{ content:""; width:16px; height:2px; background:var(--lac); }
+/* C kanji */
+.logoC .lkanji{ font-family:var(--serif); font-weight:700; font-size:2.6rem; color:var(--lfg); padding-right:13px; margin-right:13px; border-right:1px solid color-mix(in oklab, var(--lfg) 30%, transparent); line-height:1; }
+.logoC .lword2{ display:flex; flex-direction:column; line-height:1.05; }
+.logoC .lword2 .a{ font-family:var(--serif); font-weight:700; font-size:1.15rem; letter-spacing:.04em; color:var(--lfg); }
+.logoC .lword2 .b{ display:flex; align-items:center; gap:.3em; font-family:var(--mono); font-size:.64rem; letter-spacing:.34em; text-transform:uppercase; color:var(--lfg); margin-top:2px; }
+.logoC .lword2 .b i{ width:4px; height:4px; background:var(--lac); border-radius:50%; }
+
+/* palette */
+.palette{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.sw{ border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.sw .chip-c{ aspect-ratio:3/2; }
+.sw .sw-meta{ padding:12px 14px; }
+.sw .sw-name{ font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; }
+.sw .sw-hex{ font-size:.78rem; color:var(--ink-3); margin-top:.2em; }
+
+/* type specimen */
+.spec{ border-top:1px solid var(--line); }
+.spec-row{ display:grid; grid-template-columns:160px 1fr; gap:24px; padding:clamp(20px,2.4vw,30px) 0; border-bottom:1px solid var(--line); align-items:baseline; }
+.spec-row .sl{ font-family:var(--mono); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); }
+.comp-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(20px,3vw,40px); }
+.comp-box{ border:1px solid var(--line); padding:clamp(22px,2.6vw,34px); }
+.comp-box .cbt{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); margin-bottom:1.2em; }
+.row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+@media (max-width:760px){ .logolab{ grid-template-columns:1fr; } .palette{ grid-template-columns:1fr 1fr; } .comp-grid{ grid-template-columns:1fr; } .spec-row{ grid-template-columns:1fr; gap:.5em; } }
+</style>
+</head>
+<body data-page="">
+
+<header class="page-hero wrap">
+  <span class="label reveal"><span class="num">柔道</span> Identité & design system</span>
+  <h1 class="ttl reveal d1">Une identité à créer,<br>au service du judo.</h1>
+  <p class="intro lead reveal d2">L’ACB Judo n’a pas encore de logo propre — le logo omnisports n’appartient pas à la section judo. Voici trois directions à départager, puis le système visuel complet : <strong>bleu ACB</strong> en primaire, crème chaud et un accent <strong>or</strong>, dans un esprit d’encre japonaise.</p>
+</header>
+
+<!-- LOGO DIRECTIONS -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(26px,3vw,42px)">
+    <div><span class="label"><span class="num">01</span> Logo — 3 directions</span>
+    <h2 class="h2" style="margin-top:.5em;max-width:20ch">À départager ensemble</h2></div>
+    <p class="muted small" style="max-width:32ch">Chaque direction se décline en bleu, or et blanc, et fonctionne du favicon au grand format.</p>
+  </div>
+
+  <div class="logolab reveal d1">
+    <!-- A : Ensō + wordmark -->
+    <div class="logodir">
+      <div class="stage"><div class="logo logoA">
+        <svg class="lmark" viewBox="0 0 40 40" fill="none"><path d="M30.5 9.5 A14 14 0 1 0 33 22.5" stroke="var(--lac)" stroke-width="3.4" stroke-linecap="round"/><path d="M28.2 7 L34 10 L31.5 16" stroke="var(--lac)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/></svg>
+        <span class="lword"><span class="lw1">ACB</span><span class="lw2">Judo<i class="ldot"></i></span></span>
+      </div></div>
+      <div class="meta"><div class="dn">A · Ensō & wordmark</div><div class="dx">Cercle ensō or (le geste du pinceau) + monogramme. Notre recommandation — déjà en place dans l’en-tête du site.</div></div>
+      <div class="chips-mono">
+        <div class="swatch-mini s-ink"><div class="logo logoA"><svg class="lmark" viewBox="0 0 40 40" fill="none"><path d="M30.5 9.5 A14 14 0 1 0 33 22.5" stroke="var(--lac)" stroke-width="3.4" stroke-linecap="round"/></svg><span class="lword"><span class="lw1">ACB</span><span class="lw2">Judo<i class="ldot"></i></span></span></div></div>
+        <div class="swatch-mini s-red"><div class="logo logoA"><svg class="lmark" viewBox="0 0 40 40" fill="none"><path d="M30.5 9.5 A14 14 0 1 0 33 22.5" stroke="var(--lac)" stroke-width="3.4" stroke-linecap="round"/></svg><span class="lword"><span class="lw1">ACB</span><span class="lw2">Judo<i class="ldot"></i></span></span></div></div>
+      </div>
+    </div>
+
+    <!-- B : Monogram badge -->
+    <div class="logodir">
+      <div class="stage"><div class="logo logoB">
+        <span class="lbadge"><span class="lb-acb">ACB</span></span>
+        <span class="lb-judo">Judo</span>
+      </div></div>
+      <div class="meta"><div class="dn">B · Monogramme</div><div class="dx">Badge sobre et institutionnel. Excellent en favicon et en tampon ; très lisible en petit.</div></div>
+      <div class="chips-mono">
+        <div class="swatch-mini s-ink"><div class="logo logoB"><span class="lbadge"><span class="lb-acb">ACB</span></span><span class="lb-judo">Judo</span></div></div>
+        <div class="swatch-mini s-red"><div class="logo logoB"><span class="lbadge"><span class="lb-acb">ACB</span></span><span class="lb-judo">Judo</span></div></div>
+      </div>
+    </div>
+
+    <!-- C : Kanji-led -->
+    <div class="logodir">
+      <div class="stage"><div class="logo logoC">
+        <span class="lkanji">柔道</span>
+        <span class="lword2"><span class="a">ACB</span><span class="b">Judo<i></i></span></span>
+      </div></div>
+      <div class="meta"><div class="dn">C · Kanji 柔道</div><div class="dx">Le plus affirmé culturellement : le kanji « judo » porte l’identité, le wordmark accompagne.</div></div>
+      <div class="chips-mono">
+        <div class="swatch-mini s-ink"><div class="logo logoC"><span class="lkanji">柔道</span><span class="lword2"><span class="a">ACB</span><span class="b">Judo<i></i></span></span></div></div>
+        <div class="swatch-mini s-red"><div class="logo logoC"><span class="lkanji">柔道</span><span class="lword2"><span class="a">ACB</span><span class="b">Judo<i></i></span></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(22px,3vw,34px)">
+    <div><span class="label"><span class="num">02</span> Palette</span>
+    <h2 class="h2" style="margin-top:.5em">Bleu ACB, crème, un or.</h2></div>
+  </div>
+  <div class="palette reveal d1">
+    <div class="sw"><div class="chip-c" style="background:var(--paper)"></div><div class="sw-meta"><div class="sw-name">Crème</div><div class="sw-hex">#F4ECDF</div></div></div>
+    <div class="sw"><div class="chip-c" style="background:var(--night)"></div><div class="sw-meta"><div class="sw-name">Bleu ACB</div><div class="sw-hex">#1B2472</div></div></div>
+    <div class="sw"><div class="chip-c" style="background:var(--ink)"></div><div class="sw-meta"><div class="sw-name">Encre · nuit</div><div class="sw-hex">#21243D</div></div></div>
+    <div class="sw"><div class="chip-c" style="background:var(--red)"></div><div class="sw-meta"><div class="sw-name">Or · accent</div><div class="sw-hex">#CF8F2E</div></div></div>
+    <div class="sw"><div class="chip-c" style="background:var(--paper-deep)"></div><div class="sw-meta"><div class="sw-name">Crème profond</div><div class="sw-hex">#ECE1CE</div></div></div>
+  </div>
+  <p class="muted small reveal d2" style="margin-top:1em">Le bleu ACB est notre primaire ; le crème réchauffe l’ensemble ; l’or signe l’accent : CTA, ensō, filets, états actifs.</p>
+</section>
+
+<!-- TYPE -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(10px,2vw,18px)">
+    <div><span class="label"><span class="num">03</span> Typographie</span>
+    <h2 class="h2" style="margin-top:.5em">Shippori Mincho × Zen Kaku Gothic</h2></div>
+  </div>
+  <div class="spec reveal d1">
+    <div class="spec-row"><span class="sl">Display · Shippori Mincho</span><span style="font-family:var(--serif);font-weight:600;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05">Le judo pour tous. 柔道</span></div>
+    <div class="spec-row"><span class="sl">Titre · Shippori Mincho</span><span style="font-family:var(--serif);font-weight:600;font-size:1.8rem">Une pratique, un art de vie.</span></div>
+    <div class="spec-row"><span class="sl">Corps · Zen Kaku Gothic</span><span style="font-size:1.05rem;color:var(--ink-2);max-width:54ch">Club familial et accueillant, du baby-judo à la compétition, réparti sur quatre gymnases de Bobigny — en loisir comme en compétition.</span></div>
+    <div class="spec-row"><span class="sl">Mono · labels</span><span style="font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red)">01 — Cours & horaires</span></div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(22px,3vw,34px)">
+    <div><span class="label"><span class="num">04</span> Composants</span>
+    <h2 class="h2" style="margin-top:.5em">Briques réutilisables</h2></div>
+  </div>
+  <div class="comp-grid reveal d1">
+    <div class="comp-box"><div class="cbt">Boutons</div><div class="row"><a class="btn btn-red">S’inscrire <span class="arw">→</span></a><a class="btn btn-dark">Découvrir</a><a class="btn btn-ghost">Voir les horaires</a></div><div class="row" style="margin-top:14px"><a class="tlink">Lien texte <span class="arw">→</span></a></div></div>
+    <div class="comp-box"><div class="cbt">Chips & tags</div><div class="row"><span class="chip" style="border:1px solid var(--line);padding:.5em 1em;font-size:.85rem">Tous</span><span class="pill">Baby judo</span><span class="tag">+ 10 € non-Balbyniens</span></div></div>
+    <div class="comp-box"><div class="cbt">Carte cours</div><article class="card-cours" style="min-height:auto;border:1px solid var(--line)"><span class="cnum">03</span><h3 style="margin-top:1em">Judo enfants</h3><span class="age">6 – 13 ans</span><p class="desc">Technique, chutes, premières ceintures et compétitions.</p></article></div>
+    <div class="comp-box"><div class="cbt">Carte tarif</div><div class="tcard" style="border:1px solid var(--line)"><span class="tname">Enfants</span><span class="tage">6 – 13 ans</span><div class="tprice">200<span class="cur">€</span></div><p class="tper">par an · saison complète</p></div></div>
+  </div>
+</section>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

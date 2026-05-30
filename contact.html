@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · ACB Judo</title>
+<meta name="description" content="Contacter l'ACB Judo : téléphone, email, adresses des dojos à Bobigny et formulaire de contact.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.coords{ display:flex; flex-wrap:wrap; gap:clamp(20px,4vw,56px); border-block:1px solid var(--line); padding-block:clamp(24px,3vw,36px); }
+.coord .ck{ font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); }
+.coord .cv{ font-family:var(--serif); font-size:clamp(1.1rem,1.8vw,1.5rem); margin-top:.3em; }
+.coord .cv a:hover{ color:var(--red); }
+.map{ aspect-ratio:16/7; margin-top:clamp(26px,3vw,40px); }
+.map.ph{ background:repeating-linear-gradient(135deg,#e9e5dd 0 2px,transparent 2px 13px),var(--paper-deep); }
+.cth-inner{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(28px,5vw,56px); align-items:center; }
+.cth-media{ border-radius:var(--r-lg); overflow:hidden; box-shadow:0 18px 44px rgba(27,36,114,.16); border:1px solid var(--line); }
+.cth-media img{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:4/3.4; }
+@media (max-width:760px){ .cth-inner{ grid-template-columns:1fr; } .cth-media{ order:-1; } .cth-media img{ aspect-ratio:16/10; object-position:center 28%; } }
+</style>
+</head>
+<body data-page="contact">
+
+<header class="page-hero">
+  <div class="wrap cth-inner">
+    <div>
+      <span class="label reveal"><span class="num">07</span> Contact</span>
+      <h1 class="ttl reveal d1">Une question ?<br>Venez nous voir.</h1>
+      <p class="intro lead reveal d2">Le plus simple est de passer pendant un cours. Vous pouvez aussi nous appeler, nous écrire, ou utiliser le formulaire ci-dessous.</p>
+    </div>
+    <div class="cth-media reveal d2"><img src="assets/photo-kids.webp" alt="Enfants au judo, sur le tatami"></div>
+  </div>
+</header>
+
+<!-- COORDONNÉES -->
+<section class="wrap">
+  <div class="coords reveal">
+    <div class="coord"><div class="ck">Téléphone</div><div class="cv"><a href="tel:+33787023215">07 87 02 32 15</a></div><div class="cv" style="font-size:1.05rem"><a href="tel:+33950845890">09 50 84 58 90</a></div></div>
+    <div class="coord"><div class="ck">Email</div><div class="cv"><a href="mailto:direction.acbjudo@gmail.com">direction.acbjudo@gmail.com</a></div></div>
+    <div class="coord"><div class="ck">Siège</div><div class="cv" style="font-size:1.05rem">Espace Maurice Niles<br>11 rue du 8 Mai 1945, 93000 Bobigny</div></div>
+    <div class="coord"><div class="ck">Réseaux</div><div class="cv" style="font-size:1.05rem;display:flex;gap:14px"><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/33787023215" target="_blank" rel="noopener">WhatsApp</a></div></div>
+  </div>
+</section>
+
+<!-- FORM + LIEUX -->
+<section class="section wrap">
+  <div class="contact-grid">
+    <div class="reveal">
+      <span class="label"><span class="num">01</span> Écrivez-nous</span>
+      <h2 class="h2" style="margin-top:.5em;margin-bottom:1em">Un message, on vous répond.</h2>
+      <form id="cform" novalidate>
+        <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" required placeholder="Votre nom"></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="vous@exemple.fr"></div>
+        <div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" required placeholder="Âge de l’enfant, gymnase souhaité, vos questions…"></textarea></div>
+        <button type="submit" class="btn btn-red">Envoyer le message <span class="arw">→</span></button>
+        <div id="cok" class="form-ok" style="display:none;margin-top:1em">Merci&nbsp;! Votre message a bien été pris en compte — nous revenons vers vous rapidement. <span class="muted">(Maquette : aucun envoi réel.)</span></div>
+      </form>
+    </div>
+    <div class="reveal d1">
+      <span class="label"><span class="num">02</span> Les dojos</span>
+      <h2 class="h2" style="margin-top:.5em;margin-bottom:.4em">Où nous trouver</h2>
+      <div class="place-item"><h4><span class="gdot" style="background:var(--red)"></span>Gymnase Jean-Pierre Timbaud</h4><address>160 rue Lacide Villard, 93000 Bobigny</address></div>
+      <div class="place-item"><h4><span class="gdot" style="background:var(--ink)"></span>Gymnase Paul Éluard</h4><address>Bobigny (93)</address></div>
+      <div class="place-item"><h4><span class="gdot" style="background:#b89a3e"></span>Gymnase Marcel Cachin</h4><address>Bobigny (93)</address></div>
+      <div class="place-item"><h4><span class="gdot" style="background:var(--ink-3)"></span>Le Prisme</h4><address>Bobigny (93) · espace inclusif, inauguré en 2025</address></div>
+      <div class="map ph" data-label="Carte — les 4 lieux à Bobigny (à intégrer)"><span class="tick"></span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('cform').addEventListener('submit', function (e) {
+  e.preventDefault();
+  if (!this.checkValidity()) { this.reportValidity(); return; }
+  document.getElementById('cok').style.display = 'block';
+  this.querySelector('button[type=submit]').textContent = 'Message envoyé ✓';
+  this.reset();
+});
+</script>
+<script src="assets/site.js"></script>
+</body>
+</html>

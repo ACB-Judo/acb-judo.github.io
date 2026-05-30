@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cours & horaires · ACB Judo</title>
+<meta name="description" content="Planning des cours de l'ACB Judo, filtrable par gymnase et par catégorie d'âge. Timbaud, Paul Éluard, Marcel Cachin — Bobigny.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+/* ---- filter bar ---- */
+.filters{ display:flex; flex-direction:column; gap:clamp(16px,2vw,24px); padding-block:clamp(22px,3vw,32px); border-block:1px solid var(--line); }
+.filter-group{ display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; }
+.filter-legend{ font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); min-width:118px; }
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{ font-family:var(--sans); font-size:.85rem; color:var(--ink-2); background:var(--paper-pure); border:1px solid var(--line);
+  padding:.5em 1em; cursor:pointer; transition:all .25s var(--ease); }
+.chip:hover{ border-color:var(--ink-3); color:var(--ink); }
+.chip[aria-pressed="true"]{ background:var(--ink); color:#fff; border-color:var(--ink); }
+.chip[data-key="cat"][aria-pressed="true"]{ background:var(--red); border-color:var(--red); }
+
+.toolbar{ display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; margin-top:clamp(22px,3vw,34px); }
+.gym-info{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:.92rem; color:var(--ink-2); }
+.gym-info .sep{ color:var(--line); }
+.gym-info strong{ font-weight:600; color:var(--ink); }
+#result-count{ font-family:var(--mono); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap; }
+
+.gdot{ width:9px; height:9px; flex:0 0 auto; display:inline-block; }
+.g-timbaud{ background:var(--red); }
+.g-eluard{ background:var(--ink); }
+.g-cachin{ background:#b89a3e; }
+
+/* ---- planning grid ---- */
+.planning{ display:grid; grid-template-columns:repeat(5,1fr); border-top:1px solid var(--line); border-left:1px solid var(--line); margin-top:clamp(26px,3vw,40px); }
+.day-col{ border-right:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; flex-direction:column; min-height:200px; }
+.day-col.is-empty{ background:var(--paper); }
+.day-head{ display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid var(--line); background:var(--paper-pure); }
+.day-name{ font-family:var(--serif); font-weight:600; font-size:1.05rem; }
+.day-count{ font-family:var(--mono); font-size:.68rem; color:var(--ink-3); border:1px solid var(--line); border-radius:50%; width:22px; height:22px; display:flex; align-items:center; justify-content:center; }
+.day-body{ display:flex; flex-direction:column; }
+.sess{ padding:15px 16px; border-bottom:1px solid var(--line-soft); transition:background .25s var(--ease); }
+.sess:last-child{ border-bottom:0; }
+.sess:hover{ background:var(--paper-pure); }
+.sess-time{ font-family:var(--mono); font-size:.78rem; letter-spacing:.04em; color:var(--ink); font-weight:500; }
+.sess-time .dash{ color:var(--ink-3); margin:0 .25em; }
+.sess-label{ margin-top:.45em; font-size:.95rem; font-weight:500; line-height:1.3; }
+.sess-gym{ margin-top:.5em; display:flex; align-items:center; gap:7px; font-size:.78rem; color:var(--ink-3); }
+.sess-empty{ padding:22px 16px; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
+
+/* ---- legend ---- */
+.legend{ display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line); }
+.leg-item{ text-align:left; background:var(--paper); border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:18px 18px; cursor:pointer; display:flex; flex-direction:column; gap:.3em; transition:background .25s var(--ease); font-family:var(--sans); }
+.leg-item:hover{ background:var(--paper-pure); }
+.leg-label{ font-weight:600; font-size:.98rem; color:var(--ink); }
+.leg-age{ font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; color:var(--red); }
+
+@media (max-width:900px){
+  .planning{ grid-template-columns:1fr 1fr; }
+  .day-col.is-empty{ display:none; }
+}
+@media (max-width:560px){
+  .planning{ grid-template-columns:1fr; }
+  .filter-legend{ min-width:0; width:100%; }
+}
+.ch-inner{ display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(28px,5vw,60px); align-items:center; }
+.ch-media{ position:relative; display:flex; align-items:center; justify-content:center; min-height:clamp(250px,30vw,400px); }
+.ch-media .ch-ring{ position:absolute; width:min(82%,360px); aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 44% 38%, #fffdf8, var(--paper-deep)); box-shadow:0 22px 50px rgba(27,36,114,.14); }
+.ch-media img{ position:relative; z-index:1; width:min(108%,500px); height:auto; animation:chFloat 8s ease-in-out infinite; }
+@keyframes chFloat{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-9px) rotate(1.4deg); } }
+@media (max-width:760px){ .ch-inner{ grid-template-columns:1fr; } .ch-media{ order:-1; min-height:230px; } }
+</style>
+</head>
+<body data-page="cours">
+
+<header class="page-hero with-line" data-screen-label="Cours — En-tête">
+  <div class="wrap ch-inner">
+    <div class="ch-copy">
+      <span class="label reveal"><span class="num">03</span> Cours & horaires</span>
+      <h1 class="ttl reveal d1">Trouvez votre créneau,<br>par gymnase et par <span class="brush-word">âge<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</h1>
+      <p class="intro lead reveal d2">Les cours sont répartis sur trois gymnases de Bobigny. Filtrez le planning ci-dessous pour n’afficher que ce qui vous concerne. Saison de référence 2023/24 — horaires 2025/26 à confirmer.</p>
+    </div>
+    <div class="ch-media reveal d2"><span class="ch-ring"></span><img src="assets/poly-cours.webp" alt="Judokas — projection, illustration low-poly"></div>
+  </div>
+</header>
+
+<section class="wrap" id="planning-top">
+  <div class="filters reveal" id="filters" aria-label="Filtres du planning"></div>
+  <div class="toolbar reveal">
+    <div class="gym-info" id="gym-info"></div>
+    <span id="result-count"></span>
+  </div>
+  <div class="planning reveal d1" id="planning" aria-live="polite"></div>
+</section>
+
+<section class="section wrap">
+  <div class="sec-head reveal" style="margin-bottom:clamp(22px,3vw,34px)">
+    <div>
+      <span class="label"><span class="num">04</span> Légende</span>
+      <h2 class="h2" style="margin-top:.5em;max-width:20ch">Les catégories du club</h2>
+    </div>
+    <p class="muted small" style="max-width:34ch">Cliquez une catégorie pour filtrer le planning. Tranches d’âge indicatives, selon les catégories FFJudo.</p>
+  </div>
+  <div class="legend reveal d1" id="legend"></div>
+</section>
+
+<script src="assets/cours.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
