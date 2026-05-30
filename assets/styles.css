@@ -17,6 +17,7 @@
 :root{
   /* ink / paper */
   --paper:        #f4ecdf;   /* crème chaud, fond dominant */
+  --paper-hi:     #f6f4ed;   /* crème clair — header collant & status bar (forehead iOS) */
   --paper-pure:   #fffdf8;
   --paper-deep:   #ece1ce;   /* panneaux discrets */
   --ink:          #21243d;   /* encre bleu-nuit, texte & titres */
@@ -33,6 +34,7 @@
   /* bleu ACB pour les sections sombres */
   --night:        #1b2472;
   --night-2:      #232c82;
+  --night-deep:   #121852;   /* indigo profond du voile hero & status bar accueil */
 
   /* type */
   --serif: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
@@ -55,7 +57,7 @@
 html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
 body{
   margin:0;
-  background:#f6f4ed;
+  background:var(--paper);
   color:var(--ink);
   font-family:var(--sans);
   font-weight:400;
@@ -142,7 +144,7 @@ p{ margin:0; text-wrap:pretty; }
   transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
 }
 .site-header.solid{
-  background:#f6f4ed;
+  background:var(--paper-hi);
   box-shadow:0 1px 0 var(--line);
   padding-top:calc(12px + env(safe-area-inset-top, 0px)); padding-bottom:12px;
 }
