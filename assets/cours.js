@@ -52,12 +52,13 @@
   /* ---- build filter bar ---- */
   var bar = document.getElementById('filters');
   var gymChips = [['all', 'Tous les gymnases']].concat(Object.keys(GYMS).map(function (k) { return [k, GYMS[k].name.replace('Gymnase ', '')]; }));
-  var catChips = [['all', 'Toutes catégories']].concat(CATS.map(function (c) { return [c.id, c.label]; }));
+  var catChips = [['all', 'Toutes catégories', 'tous âges']].concat(CATS.map(function (c) { return [c.id, c.label, c.age]; }));
 
   function chipRow(legend, items, key) {
     var html = '<div class="filter-group"><span class="filter-legend">' + legend + '</span><div class="chips">';
     html += items.map(function (it) {
-      return '<button class="chip" data-key="' + key + '" data-val="' + it[0] + '"' + (state[key] === it[0] ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' + it[1] + '</button>';
+      var age = it[2] ? '<span class="chip-age">' + it[2] + '</span>' : '';
+      return '<button class="chip" data-key="' + key + '" data-val="' + it[0] + '" aria-pressed="' + (state[key] === it[0] ? 'true' : 'false') + '"><span class="chip-lbl">' + it[1] + '</span>' + age + '</button>';
     }).join('');
     return html + '</div></div>';
   }
@@ -122,21 +123,6 @@
     state[c.dataset.key] = c.dataset.val;
     render();
   });
-
-  /* ---- legend ---- */
-  var leg = document.getElementById('legend');
-  if (leg) {
-    leg.innerHTML = CATS.map(function (c) {
-      return '<button class="leg-item" data-val="' + c.id + '"><span class="leg-label">' + c.label + '</span><span class="leg-age">' + c.age + '</span></button>';
-    }).join('');
-    leg.addEventListener('click', function (e) {
-      var it = e.target.closest('.leg-item'); if (!it) return;
-      state.cat = (state.cat === it.dataset.val) ? 'all' : it.dataset.val;
-      render();
-      var anchor = document.getElementById('planning-top');
-      if (anchor) window.scrollTo({ top: anchor.getBoundingClientRect().top + window.scrollY - 90, behavior: 'smooth' });
-    });
-  }
 
   render();
 })();

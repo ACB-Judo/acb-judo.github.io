@@ -30,10 +30,13 @@
 .filter-legend{ font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3); min-width:118px; }
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip{ font-family:var(--sans); font-size:.85rem; color:var(--ink-2); background:var(--paper-pure); border:1px solid var(--line);
-  padding:.5em 1em; cursor:pointer; transition:all .25s var(--ease); }
+  padding:.5em .9em; cursor:pointer; transition:all .25s var(--ease); display:inline-flex; flex-direction:column; gap:.18em; text-align:left; line-height:1.25; }
 .chip:hover{ border-color:var(--ink-3); color:var(--ink); }
 .chip[aria-pressed="true"]{ background:var(--ink); color:#fff; border-color:var(--ink); }
 .chip[data-key="cat"][aria-pressed="true"]{ background:var(--red); border-color:var(--red); }
+.chip-lbl{ font-weight:500; }
+.chip-age{ font-family:var(--mono); font-size:.71rem; letter-spacing:.03em; color:var(--red); }
+.chip[aria-pressed="true"] .chip-age{ color:rgba(255,255,255,.82); }
 
 .toolbar{ display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; margin-top:clamp(22px,3vw,34px); }
 .gym-info{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:.92rem; color:var(--ink-2); }
@@ -63,13 +66,6 @@
 .sess-gym{ margin-top:.5em; display:flex; align-items:center; gap:7px; font-size:.78rem; color:var(--ink-3); }
 .sess-empty{ padding:22px 16px; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); }
 
-/* ---- legend ---- */
-.legend{ display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:0; border-top:1px solid var(--line); border-left:1px solid var(--line); }
-.leg-item{ text-align:left; background:var(--paper); border:0; border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:18px 18px; cursor:pointer; display:flex; flex-direction:column; gap:.3em; transition:background .25s var(--ease); font-family:var(--sans); }
-.leg-item:hover{ background:var(--paper-pure); }
-.leg-label{ font-weight:600; font-size:.98rem; color:var(--ink); }
-.leg-age{ font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; color:var(--red); }
-
 @media (max-width:900px){
   .planning{ grid-template-columns:1fr 1fr; }
   .day-col.is-empty{ display:none; }
@@ -93,7 +89,7 @@
     <div class="ch-copy">
       <span class="label reveal"><span class="num">03</span> Cours & horaires</span>
       <h1 class="ttl reveal d1">Trouvez votre créneau,<br>par gymnase et par <span class="brush-word">âge<img class="ubrush" src="assets/brush-gold.webp" alt="" aria-hidden="true"></span>.</h1>
-      <p class="intro lead reveal d2">Les cours sont répartis sur trois gymnases de Bobigny. Filtrez le planning ci-dessous pour n’afficher que ce qui vous concerne. Saison de référence 2023/24 — horaires 2025/26 à confirmer.</p>
+      <p class="intro lead reveal d2">Les cours sont répartis sur trois gymnases de Bobigny. Filtrez le planning ci-dessous par gymnase ou par âge pour n’afficher que ce qui vous concerne. Âges indicatifs (catégories FFJudo) · saison de référence 2023/24, horaires 2025/26 à confirmer.</p>
     </div>
     <div class="ch-media reveal d2"><span class="ch-ring"></span><img src="assets/poly-cours.webp" alt="Judokas — projection, illustration low-poly"></div>
   </div>
@@ -106,17 +102,6 @@
     <span id="result-count"></span>
   </div>
   <div class="planning reveal d1" id="planning" aria-live="polite"></div>
-</section>
-
-<section class="section wrap">
-  <div class="sec-head reveal" style="margin-bottom:clamp(22px,3vw,34px)">
-    <div>
-      <span class="label"><span class="num">04</span> Légende</span>
-      <h2 class="h2" style="margin-top:.5em;max-width:20ch">Les catégories du club</h2>
-    </div>
-    <p class="muted small" style="max-width:34ch">Cliquez une catégorie pour filtrer le planning. Tranches d’âge indicatives, selon les catégories FFJudo.</p>
-  </div>
-  <div class="legend reveal d1" id="legend"></div>
 </section>
 
 <script src="assets/cours.js"></script>
