@@ -4,7 +4,7 @@
 
   var GYMS = {
     timbaud: { name: 'Gymnase Jean-Pierre Timbaud', addr: '160 rue Lacide Villard, 93000 Bobigny', prof: 'Namyck Bouzera · Ludovic Amedah (adultes)' },
-    eluard:  { name: 'Gymnase Paul Éluard', addr: 'Bobigny (93)', prof: 'Laetitia Blanchard' },
+    eluard:  { name: 'Gymnase Paul Éluard', addr: 'Bobigny (93)', prof: 'Hakim Mouri' },
     cachin:  { name: 'Gymnase Marcel Cachin', addr: 'Bobigny (93)', prof: 'Teddy Grillon' }
   };
 

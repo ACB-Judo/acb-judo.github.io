@@ -32,7 +32,7 @@
    linear-gradient(0deg, rgba(18,24,82,.9) 0%, rgba(18,24,82,0) 38%); }
 .xhero .grain{ position:absolute; inset:0; z-index:1; opacity:.5; pointer-events:none;
    background:repeating-linear-gradient(135deg, rgba(255,255,255,.018) 0 1px, transparent 1px 9px); }
-.xhero .enso-big{ position:absolute; right:-7%; top:50%; transform:translateY(-50%); z-index:1; width:min(58vh,600px); height:min(58vh,600px); opacity:.82; pointer-events:none; animation:ensoFloat 9s ease-in-out infinite; }ease-in-out infinite; }
+.xhero .enso-big{ position:absolute; right:-7%; top:50%; transform:translateY(-50%); z-index:1; width:min(58vh,600px); height:min(58vh,600px); opacity:.82; pointer-events:none; animation:ensoFloat 9s ease-in-out infinite; }
 @keyframes ensoFloat{ 0%,100%{ transform:translateY(-50%) rotate(0deg); } 50%{ transform:translateY(-53%) rotate(4deg); } }
 .xhero .kanji-bg{ position:absolute; right:3%; bottom:-6%; z-index:1; font-family:var(--serif); font-weight:700; font-size:min(40vw,560px); line-height:.7; color:#fff; opacity:.035; pointer-events:none; }
 
@@ -154,7 +154,7 @@ body[data-hero-dark] .btn-ghost:hover{ --bg:#fff; --fg:var(--ink); --bd:#fff; }
   .doors{ grid-template-columns:1fr; }
   .door{ border-right:0; border-bottom:0; }
   .kids-inner{ grid-template-columns:1fr; }
-  .xhero .enso-big{ width:60vw; right:-18%; opacity:.6; }
+  .xhero .enso-big{ width:58vw; height:auto; aspect-ratio:1/1; right:-16%; opacity:.5; }
 }
 </style>
 <script type="application/ld+json">
