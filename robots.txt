@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /marque.html
+
+Sitemap: https://acb-judo.github.io/sitemap.xml
