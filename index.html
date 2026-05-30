@@ -25,6 +25,11 @@
 <link rel="stylesheet" href="assets/styles.css">
 <style>
 /* ============ HERO (immersif, sombre) ============ */
+/* Fond body indigo sur l'accueil : iOS Safari (récent) teinte la zone du status bar
+   (forehead) avec le background du body, pas avec theme-color. Les sections claires
+   en dessous ont chacune leur propre fond, donc rien ne régresse. */
+html{ background:var(--night); }
+body[data-page="accueil"]{ background:var(--night); }
 .xhero{ position:relative; min-height:100svh; background:var(--night); color:#fff; overflow:hidden; display:flex; flex-direction:column; }
 .xhero .slot{ position:absolute; inset:0; width:100%; height:100%; --is-radius:0; }
 .xhero .veil{ position:absolute; inset:0; z-index:1; background:
@@ -62,7 +67,7 @@ body[data-hero-dark] .btn-ghost:hover{ --bg:#fff; --fg:var(--ink); --bd:#fff; }
 
 /* ============ DISCIPLINES (interactif) ============ */
 .disc{ display:grid; grid-template-columns:1.05fr 1fr; min-height:84vh; }
-.disc-left{ padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px); display:flex; flex-direction:column; justify-content:center; }
+.disc-left{ padding:clamp(40px,6vw,80px) clamp(24px,4vw,60px); display:flex; flex-direction:column; justify-content:center; background:var(--paper); }
 .disc-list{ list-style:none; margin:clamp(20px,3vw,40px) 0 0; padding:0; }
 .disc-item{ display:flex; align-items:baseline; gap:18px; padding:clamp(10px,1.3vw,17px) 0; border-bottom:1px solid var(--line); cursor:pointer;
    color:var(--ink-3); transition:color .3s var(--ease), padding-left .4s var(--ease); }
