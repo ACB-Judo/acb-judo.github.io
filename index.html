@@ -28,11 +28,12 @@
 /* Fond body indigo sur l'accueil : iOS Safari (récent) teinte la zone du status bar
    (forehead) avec le background du body, pas avec theme-color. Les sections claires
    en dessous ont chacune leur propre fond, donc rien ne régresse. */
-html{ background:var(--night); }
-body[data-page="accueil"]{ background:var(--night); }
+html{ background:#121852; }
+body[data-page="accueil"]{ background:#121852; }
 .xhero{ position:relative; min-height:100svh; background:var(--night); color:#fff; overflow:hidden; display:flex; flex-direction:column; }
 .xhero .slot{ position:absolute; inset:0; width:100%; height:100%; --is-radius:0; }
 .xhero .veil{ position:absolute; inset:0; z-index:1; background:
+   linear-gradient(180deg, #121852 0%, #121852 6%, rgba(18,24,82,0) 30%),
    linear-gradient(90deg, rgba(18,24,82,.93) 0%, rgba(18,24,82,.72) 42%, rgba(18,24,82,.34) 100%),
    linear-gradient(0deg, rgba(18,24,82,.9) 0%, rgba(18,24,82,0) 38%); }
 .xhero .grain{ position:absolute; inset:0; z-index:1; opacity:.5; pointer-events:none;
