@@ -142,7 +142,7 @@ p{ margin:0; text-wrap:pretty; }
   transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
 }
 .site-header.solid{
-  background:rgba(247,245,241,.86); backdrop-filter:blur(14px) saturate(1.2);
+  background:#f6f4ed;
   box-shadow:0 1px 0 var(--line);
   padding-top:calc(12px + env(safe-area-inset-top, 0px)); padding-bottom:12px;
 }
