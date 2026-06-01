@@ -71,7 +71,7 @@
   '<div class="wrap">' +
     '<div class="footer-top">' +
       '<div class="footer-col footer-brand">' +
-        '<div class="kx">\u67d4\u9053</div>' +
+        '<img class="footer-logo" src="assets/logo.webp" alt="ACB Judo \u2014 Ath\u00e9l\u00e9tic Club de Bobigny" width="300" height="150">' +
         '<p>ACB Judo \u2014 section judo de l\u2019Ath\u00e9l\u00e9tic Club de Bobigny. Le judo pour tous, d\u00e8s 2 ans et demi, en loisir comme en comp\u00e9tition.</p>' +
         '<div style="margin-top:1.4em;display:flex;gap:10px">' +
           '<a class="pill" href="https://facebook.com" target="_blank" rel="noopener" style="color:#cfcabf;border-color:#2a2823">Facebook</a>' +

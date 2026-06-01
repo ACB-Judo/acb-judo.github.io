@@ -35,6 +35,7 @@
   --night:        #1b2472;
   --night-2:      #232c82;
   --night-deep:   #121852;   /* indigo profond du voile hero & status bar accueil */
+  --logo-navy:    #02153e;   /* marine du logo — fond du footer (raccord parfait) */
 
   /* type */
   --serif: 'Shippori Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', Georgia, serif;
@@ -256,7 +257,8 @@ p{ margin:0; text-wrap:pretty; }
 .moral .m .fr{ margin-top:.5em; font-size:.92rem; font-weight:500; }
 
 /* ============================ FOOTER ============================ */
-.site-footer{ background:var(--night); color:#cfcabf; padding-top:clamp(56px,7vw,96px); }
+.site-footer{ background:var(--logo-navy); color:#cfcabf; padding-top:clamp(56px,7vw,96px); }
+.footer-logo{ display:block; width:min(290px,82%); height:auto; margin-bottom:1.3em; }
 .site-footer a{ color:#cfcabf; }
 .site-footer a:hover{ color:#fff; }
 .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:clamp(28px,4vw,56px); padding-bottom:clamp(40px,5vw,72px); border-bottom:1px solid #2b3486; }
