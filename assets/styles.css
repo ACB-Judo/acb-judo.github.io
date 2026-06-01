@@ -257,7 +257,11 @@ p{ margin:0; text-wrap:pretty; }
 .moral .m .fr{ margin-top:.5em; font-size:.92rem; font-weight:500; }
 
 /* ============================ FOOTER ============================ */
-.site-footer{ background:var(--logo-navy); color:#cfcabf; padding-top:clamp(56px,7vw,96px); }
+.site-footer{
+  /* base = bleu nommé --night #1b2472 ; halo --logo-navy #121c64 centré sur le logo (raccord) */
+  background: radial-gradient(80% 95% at 19% 27%, var(--logo-navy) 0%, var(--logo-navy) 24%, var(--night) 62%);
+  color:#cfcabf; padding-top:clamp(56px,7vw,96px);
+}
 .footer-logo{ display:block; width:min(290px,82%); height:auto; margin-bottom:1.3em; }
 .site-footer a{ color:#cfcabf; }
 .site-footer a:hover{ color:#fff; }
@@ -378,6 +382,8 @@ body[data-hero-dark] .site-header:not(.solid) .burger span::after{ background:#f
   .pieces{ grid-template-columns:1fr; }
   .footer-top{ grid-template-columns:1fr 1fr; }
   .footer-brand{ grid-column:1/-1; }
+  /* mobile : le logo passe en haut → recentre le halo dégradé sur lui */
+  .site-footer{ background: radial-gradient(120% 42% at 34% 9%, var(--logo-navy) 0%, var(--logo-navy) 30%, var(--night) 72%); }
 }
 @media (max-width:460px){
   .profs{ grid-template-columns:1fr; }
